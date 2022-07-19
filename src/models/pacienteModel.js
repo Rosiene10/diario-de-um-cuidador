@@ -29,7 +29,7 @@ refeicao: {
     type: String,
     required: true
   },
-limpesaDeDispositivo: {
+limpezaDeDispositivo: {
     type: String,
     required: true
   },
