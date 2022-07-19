@@ -25,8 +25,20 @@ const buscarPacientes = async (req, res) => {
     res.status(500).json({ message: error.message})
   }
 }
+
+const buscarPacientePorId = async (req, res) => {
+  try {
+    const buscarPaciente = await PacienteModel.findById(req.params.id)
+    res.status(200).json(buscarPaciente)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ message: error.message })
+  }
+}
+
 module.exports =  {
     criarPaciente,
-    buscarPacientes
+    buscarPacientes,
+    buscarPacientePorId
 
   }
