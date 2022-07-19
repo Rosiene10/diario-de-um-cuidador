@@ -24,8 +24,19 @@ const buscarCuidadoras = async (req, res) => {
     res.status(500).json({ message: error.message})
   }
 }
+const buscarCuidadorPorId = async (req, res) => {
+  try {
+    const buscarCuidadora = await CuidadoraModel.findById(req.params.id)
+    res.status(200).json(buscarCuidadora)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ message: error.message })
+  }
+}
+
 
 module.exports =  {
     criarCuidadora,
-    buscarCuidadoras
+    buscarCuidadoras,
+    buscarCuidadorPorId
   }
