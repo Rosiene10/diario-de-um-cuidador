@@ -16,6 +16,17 @@ const criarPaciente = async (req, res) => {
    }
 }
 
+const buscarPacientes = async (req, res) => {
+  try {
+    const pacientes = await PacienteModel.find()
+    res.status(200).json(pacientes)
+  } catch(error) {
+    console.error(error)
+    res.status(500).json({ message: error.message})
+  }
+}
 module.exports =  {
-    criarPaciente
+    criarPaciente,
+    buscarPacientes
+
   }
