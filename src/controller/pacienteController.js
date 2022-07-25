@@ -52,10 +52,24 @@ const updatePaciente = async (req, res) => {
     res.status(500).json({ message: error.message })
   }
 }
+const deletePaciente = async (req, res) => {
+  try {
+      const { id } = req.params
+      const deletedPaciente = await PacienteModel.findByIdAndDelete(id) 
+      const message = `Paciente  ${deletedPaciente.nome} foi deletado com sucesso!`
+     res.status(200).json({ message })
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ message: error.message })
+  }
+}
+
+
 module.exports =  {
     criarPaciente,
     buscarPacientes,
     buscarPacientePorId,
-    updatePaciente
+    updatePaciente,
+    deletePaciente
 
   }
