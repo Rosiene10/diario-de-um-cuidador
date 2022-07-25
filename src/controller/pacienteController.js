@@ -29,6 +29,11 @@ const buscarPacientes = async (req, res) => {
 const buscarPacientePorId = async (req, res) => {
   try {
     const buscarPaciente = await PacienteModel.findById(req.params.id)
+    if(!buscarPaciente){
+      return res.status(401).json({
+        message:"id nao encontrado"
+      })
+    }
     res.status(200).json(buscarPaciente)
   } catch (error) {
     console.error(error)
@@ -43,6 +48,11 @@ const updatePaciente = async (req, res) => {
     .findByIdAndUpdate(req.params.id, {
       nome, cpf, cuidadora, medicacao, banho, refeicao, limpezaDeDispositivo, trocaDeCurativo, ultimaCuidadora,obs
     })
+    if(!updatedPaciente){
+      return res.status(401).json({
+        message:"id nao encontrado"
+      })
+    }
     const updated = await PacienteModel
     .findById(req.params.id)
 
@@ -56,6 +66,11 @@ const deletePaciente = async (req, res) => {
   try {
       const { id } = req.params
       const deletedPaciente = await PacienteModel.findByIdAndDelete(id) 
+      if(!deletedPaciente){
+        return res.status(401).json({
+          message:"id nao encontrado"
+        })
+      }
       const message = `Paciente  ${deletedPaciente.nome} foi deletado com sucesso!`
      res.status(200).json({ message })
   } catch (error) {

@@ -27,6 +27,11 @@ const buscarCuidadoras = async (req, res) => {
 const buscarCuidadorPorId = async (req, res) => {
   try {
     const buscarCuidadora = await CuidadoraModel.findById(req.params.id)
+    if(!buscarCuidadora){
+      return res.status(401).json({
+        message:"id nao encontrado"
+      })
+    }
     res.status(200).json(buscarCuidadora)
   } catch (error) {
     console.error(error)
@@ -41,6 +46,12 @@ const updateCuidadora= async (req, res) => {
     .findByIdAndUpdate(req.params.id, {
      nome,cpf, contato
     })
+
+    if(!updatedCuidadora){
+      return res.status(401).json({
+        message:"id nao encontrado"
+      })
+    }
     const updated = await CuidadoraModel
     .findById(req.params.id)
 
@@ -55,6 +66,11 @@ const deleteCuidadora = async (req, res) => {
   try {
       const { id } = req.params
       const deletedCuidadora = await CuidadoraModel.findByIdAndDelete(id) 
+      if(!deletedCuidadora){
+        return res.status(401).json({
+          message:"id nao encontrado"
+        })
+      }
       const message = `Cuidadora  ${deletedCuidadora.nome} foi deletada com sucesso!`
      res.status(200).json({ message })
   } catch (error) {
