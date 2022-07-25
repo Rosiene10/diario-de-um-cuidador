@@ -34,9 +34,31 @@ const buscarCuidadorPorId = async (req, res) => {
   }
 }
 
+const updateCuidadora= async (req, res) => {
+  try {
+    const {  nome,cpf, contato } = req.body
+    const updatedCuidadora = await CuidadoraModel
+    .findByIdAndUpdate(req.params.id, {
+     nome,cpf, contato
+    })
+    const updated = await CuidadoraModel
+    .findById(req.params.id)
+
+    res.status(200).json(updated)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ message: error.message })
+  }
+}
+
+
 
 module.exports =  {
     criarCuidadora,
     buscarCuidadoras,
-    buscarCuidadorPorId
+    buscarCuidadorPorId,
+    updateCuidadora
+
+
+  
   }
