@@ -22,7 +22,10 @@ O "Diário do cuidador" é o projeto de conclusão do bootcamp de Back-end da [{
 A ideia é que ele possa ser ultilizado por cuidadoras que precisam se atualizar sobre a rotina do paciente em cada turno, isso facilita a comunicação e precisão das informações.
 
 ## *Contextualização*
-(fazer)
+Normalmente o cuidador trabalha por plantão de 12h, presta serviço em hospital e domiciliar.
+Dando todo suporte para o paciente, higiene, medicação, alimentação, atividades de interação, passeios e muito carinho e amor.
+ser cuidadora é se dedicar a vida do assistido, nossa rotina cria um laço afetivo.
+Na maioria das vezes o contratante é um familiar e toda rotina é passada para o mesmo.
 
 ## *Funcionalidades*
 
